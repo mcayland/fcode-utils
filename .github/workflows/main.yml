@@ -28,12 +28,12 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build fcode-utils
-        uses: docker://ghcr.io/openbios/fcode-utils-builder:master
+        uses: docker://ghcr.io/mcayland/fcode-utils-builder:master
         with:
           args: "bash -c \"mkdir -p $(pwd)/build-$(uname -m) && make && make DESTDIR=$(pwd)/build-$(uname -m) install\""
 
       - name: Copy localvalues
-        uses: docker://ghcr.io/openbios/fcode-utils-builder:master
+        uses: docker://ghcr.io/mcayland/fcode-utils-builder:master
         with:
           args: "bash -c \"cp -R localvalues build-$(uname -m)\""
 
